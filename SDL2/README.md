@@ -41,3 +41,13 @@ full path to the base folder `SDL2-${VERSION}`.
 3. Configuring registry for automatic finding: create key
 `HKEY_LOCAL_MACHINE\SOFTWARE\Kitware\CMake\Packages\SDL2`, set default value
 to the `path/to/SDL2-${VERSION}`.
+
+## Automatic copy of dll files on install
+
+This cmake file has an extra variable `SDL2_RUNTIME_LIBRARIES` with the list of
+files needed at run time (SDL2.dll and the readme), you can copy these
+automatically adding the following to your `CMakeLists.txt`:
+
+```cmake
+install(FILES ${SDL2_RUNTIME_LIBRARIES} DESTINATION ".")
+```
